@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:18
+    environment:
+      POSTGRES_DB: comtrua
+      POSTGRES_USER: comtrua
+      POSTGRES_PASSWORD: comtrua
+    ports:
+      - "5432:5432"
+    volumes:
+      # Postgres 18 lưu dữ liệu tại /var/lib/postgresql (không còn là .../data)
+      - pgdata:/var/lib/postgresql
+
+volumes:
+  pgdata:

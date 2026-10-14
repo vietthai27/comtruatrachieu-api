@@ -18,7 +18,11 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/api/**").allowedOrigins(allowedOrigins).allowedMethods("GET", "POST");
+        // allowedOriginPatterns chấp nhận cả "*" lẫn mẫu như "http://192.168.*:*"
+        registry.addMapping("/api/**")
+                .allowedOriginPatterns(allowedOrigins)
+                .allowedMethods("*")
+                .allowedHeaders("*");
     }
 
     @Bean
